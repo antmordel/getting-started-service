@@ -27,3 +27,13 @@ install-dependencies:
 	@$(foreach dep,$(DEPENDENCIES), \
 		which $(dep) > /dev/null || brew install $(dep); \
 	)
+
+# ==================================================================================== #
+# RUNNING DEV
+# ==================================================================================== #
+
+## run-local: run the application locally
+.PHONY: run-local
+run-local:
+	@echo "🚀 Running application locally"
+	@go run app/services/sales-api/main.go
