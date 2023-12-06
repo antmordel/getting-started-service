@@ -37,3 +37,15 @@ install-dependencies:
 run-local:
 	@echo "🚀 Running application locally"
 	@go run app/services/sales-api/main.go
+
+KIND            := kindest/node:v1.27.3
+KIND_CLUSTER    := golang-service-cluster
+
+## dev-up: start the development environment using Kind
+.PHONY: dev-up
+dev-up:
+	kind create cluster \
+		--image $(KIND) \
+		--name $(KIND_CLUSTER)
+
+	kubectl wait --timeout=120s --namespace=local-path-storage --for=condition=Available deployment/local-path-provisioner
