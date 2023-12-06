@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sales
+  namespace: sales-system
+
+spec:
+  replicas: 1
+
+  strategy:
+    type: Recreate
+
+  template:
+    spec:
+      dnsPolicy: ClusterFirstWithHostNet
+      hostNetwork: true
+
+      containers:
+      - name: sales-api
+        resources:
+          requests:
+            cpu: "250m" # I need access to 1/4 of a core on the node.
+          limits:
+            cpu: "250m" # Execute instructions 25ms/100ms on my 1 core.
