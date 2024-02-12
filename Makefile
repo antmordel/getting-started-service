@@ -1,7 +1,7 @@
 KIND            := kindest/node:v1.27.3
 KIND_CLUSTER    := golang-service-cluster
 SERVICE_NAME		:= golang-service
-VERSION  		 		:= 0.0.1
+VERSION					:= 0.0.1
 
 DEPENDENCIES := brew kind kubectl kustomize pgcli vault kustomize
 
